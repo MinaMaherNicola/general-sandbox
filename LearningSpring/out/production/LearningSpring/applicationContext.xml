@@ -9,7 +9,19 @@
 
 	
     <!-- Define your beans here -->
-	<bean id="coach" class="springdemo.BaseballCoach"></bean>
+    <context:property-placeholder location="classpath:sport.properties" />
+
+    <bean id="happyFortune" class="springdemo.HappyFortuneService"/>
+
+	<bean id="trackCoach" class="springdemo.TrackCoach">
+        <constructor-arg ref="happyFortune" />
+    </bean>
+
+    <bean id="cricketCoach" class="springdemo.CricketCoach">
+        <property name="fortuneService" ref="happyFortune" />
+        <property name="email" value="${email}" />
+        <property name="team" value="RMA" />
+    </bean>
     
     <!-- define the dependency -->
 </beans>
