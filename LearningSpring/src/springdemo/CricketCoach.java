@@ -34,4 +34,12 @@ public class CricketCoach implements Coach{
     public String getDailyFortune() {
         return fortuneService.getFortune();
     }
+
+    private void doMyStartupStuff() {
+        System.out.println("Starting up CricketCoach");
+    }
+
+    private void doMyCleanUpStuff() {
+        System.out.println("Cleaning up CricketCoach");
+    }
 }

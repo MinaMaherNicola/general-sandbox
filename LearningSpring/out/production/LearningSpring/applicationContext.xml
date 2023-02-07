@@ -17,7 +17,9 @@
         <constructor-arg ref="happyFortune" />
     </bean>
 
-    <bean id="cricketCoach" class="springdemo.CricketCoach">
+    <bean id="cricketCoach" class="springdemo.CricketCoach"
+          init-method="doMyStartupStuff"
+          destroy-method="doMyCleanUpStuff" >
         <property name="fortuneService" ref="happyFortune" />
         <property name="email" value="${email}" />
         <property name="team" value="RMA" />
