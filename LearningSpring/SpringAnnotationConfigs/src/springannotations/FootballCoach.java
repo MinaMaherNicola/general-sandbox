@@ -19,4 +19,9 @@ public class FootballCoach implements Coach {
     public String tellFortune() {
         return fortuneService.getFortune();
     }
+
+    @Override
+    public String getEmail() {
+        return null;
+    }
 }

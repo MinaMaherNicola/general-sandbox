@@ -21,4 +21,9 @@ public class PaddleCoach implements Coach {
     public String tellFortune() {
         return fortuneService.getFortune();
     }
+
+    @Override
+    public String getEmail() {
+        return null;
+    }
 }

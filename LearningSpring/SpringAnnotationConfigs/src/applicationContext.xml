@@ -10,6 +10,7 @@
 
     <!-- Define your beans here -->
     <context:component-scan base-package="springannotations" />
+    <context:property-placeholder location="configs.properties" />
 </beans>
 
 
