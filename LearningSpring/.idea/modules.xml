@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/LearningSpring.iml" filepath="$PROJECT_DIR$/.idea/LearningSpring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringAnnotationConfigs/SpringAnnotationConfigs.iml" filepath="$PROJECT_DIR$/SpringAnnotationConfigs/SpringAnnotationConfigs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringXmlConfigs/SpringXmlConfigs.iml" filepath="$PROJECT_DIR$/SpringXmlConfigs/SpringXmlConfigs.iml" />
+    </modules>
+  </component>
+</project>
