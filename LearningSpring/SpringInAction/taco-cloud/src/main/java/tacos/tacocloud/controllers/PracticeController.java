@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -28,5 +29,33 @@ public class PracticeController {
     @GetMapping("/names")
     public String getNames() {
         return "names";
+    }
+
+    @ResponseBody
+    @GetMapping
+    public GenericResponse<Integer> h5a() {
+        var response = new GenericResponse<Integer>();
+        response.setData(10);
+        return response;
+    }
+
+    class GenericResponse<T> {
+        private T data;
+        private String message = "Success";
+        public T getData() {
+            return data;
+        }
+
+        public void setData(T data) {
+            this.data = data;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
     }
 }
