@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Solo Practice - Pizza Submission Form</title>
+</head>
+<body>
+  <form th:object="${pizzaOrderDetails}">
+    <div th:each="pizza : ${pizzaOrderDetails.pizzas}">
+      <span th:text="${pizza.name}">pizza name</span>
+    </div>
+  </form>
+  <a th:href="@{/pizza}">Get another one!</a>
+</body>
+</html>
