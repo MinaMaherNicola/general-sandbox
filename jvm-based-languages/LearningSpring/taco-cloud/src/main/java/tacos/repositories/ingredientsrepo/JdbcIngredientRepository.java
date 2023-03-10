@@ -1,4 +1,4 @@
-package tacos.repositories.IngredientsRepo;
+package tacos.repositories.ingredientsrepo;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

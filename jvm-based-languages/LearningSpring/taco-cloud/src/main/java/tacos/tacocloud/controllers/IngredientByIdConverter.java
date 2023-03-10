@@ -3,7 +3,7 @@ package tacos.tacocloud.controllers;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import tacos.domainclasses.Ingredient;
-import tacos.repositories.IngredientsRepo.IngredientRepository;
+import tacos.repositories.ingredientsrepo.IngredientRepository;
 
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {

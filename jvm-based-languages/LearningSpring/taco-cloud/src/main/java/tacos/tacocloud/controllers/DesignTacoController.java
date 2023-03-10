@@ -8,7 +8,7 @@ import tacos.domainclasses.Ingredient;
 import tacos.domainclasses.Ingredient.Type;
 import tacos.domainclasses.Taco;
 import tacos.domainclasses.TacoOrder;
-import tacos.repositories.IngredientsRepo.IngredientRepository;
+import tacos.repositories.ingredientsrepo.IngredientRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,7 +1,5 @@
-package tacos.repositories.IngredientsRepo;
+package tacos.repositories.ingredientsrepo;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Repository;
 import tacos.domainclasses.Ingredient;
 
 import java.util.Optional;
