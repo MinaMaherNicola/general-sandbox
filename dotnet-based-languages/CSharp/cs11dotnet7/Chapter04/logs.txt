@@ -1,0 +1,4 @@
+Trace is watching
+E:\code\languages-sandbox\dotnet-based-languages\CSharp\cs11dotnet7\Chapter04\Chapter04\Program.cs
+Main on line 20.
+Expression: unitInStocks > 10
