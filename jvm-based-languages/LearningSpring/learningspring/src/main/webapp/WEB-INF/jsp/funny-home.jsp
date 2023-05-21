@@ -1,1 +1,0 @@
-<h1>Funny home page</h1>
