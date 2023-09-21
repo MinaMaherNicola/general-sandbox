@@ -26,22 +26,22 @@ int main()
 
 int binarySearch(int arr[], int target)
 {
-  int left = 0, length = arrayLength(arr), right = length - 1, mid = (right + left) / 2;
-  while (left < length && right >= 0)
+  int left = 0, right = arrayLength(arr) - 1, mid;
+  while (left <= right)
   {
-    if (arr[mid] == target)
-    {
-      return mid;
-    }
+    mid = (right + left) / 2;
     if (arr[mid] > target)
     {
       right = mid - 1;
     }
-    if (arr[mid] < target)
+    else if (arr[mid] < target)
     {
       left = mid + 1;
     }
-    mid = (right + left) / 2;
+    else
+    {
+      return mid;
+    }
   }
   return -1;
 }
