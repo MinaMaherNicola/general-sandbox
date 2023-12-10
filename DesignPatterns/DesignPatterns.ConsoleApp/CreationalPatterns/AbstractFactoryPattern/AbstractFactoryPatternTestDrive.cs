@@ -3,11 +3,6 @@ using DesignPatterns.ConsoleApp.CreationalPatterns.AbstractFactoryPattern.Factor
 using DesignPatterns.ConsoleApp.CreationalPatterns.AbstractFactoryPattern.Products.ConcreteProducts.AfricanProducts;
 using DesignPatterns.ConsoleApp.CreationalPatterns.AbstractFactoryPattern.Products.ConcreteProducts.AlaskanProducts;
 using DesignPatterns.ConsoleApp.CreationalPatterns.AbstractFactoryPattern.Products.ProductContract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesignPatterns.ConsoleApp.CreationalPatterns.AbstractFactoryPattern
 {
