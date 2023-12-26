@@ -1,0 +1,112 @@
+﻿@page "/bindproperty"
+@using Tangy.Models.Models
+
+<h3>Individual Product</h3>
+<div class="row">
+    <div class="col-6 border p-3">
+        <h3 class="text-primary">Product Summary</h3>
+        <p>Name: @product.Name</p>
+        <p>This product is: @(product.IsActive ? "active" : "not active")</p>
+        @if (!string.IsNullOrWhiteSpace(selectedProperty))
+        {
+            <p>Property Selected: @selectedProperty</p>
+        }
+    </div>
+
+    <div class="col-6 border p-3">
+        <h3 class="text-primary">Product Playground</h3>
+        <div>
+            <label>Product Properties: </label>
+            <select @bind="@selectedProperty">
+                @foreach (var property in product.Properties)
+                {
+                    <option value="@property.Value">@property.Key</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label>Product Name:</label>
+            <input type="text" @bind="@product.Name" @bind:event="oninput" />
+        </div>
+        <div>
+            <p>Product activation <input type="checkbox" @bind="@product.IsActive" /></p>
+        </div>
+    </div>
+</div>
+
+<div class="row border p-3 mb-3">
+    <h3>Product Table</h3>
+
+    @foreach (var p in products)
+    {
+        <div>
+            <input type="text" @bind="@p.Name" @bind:event="oninput" />
+            <input type="checkbox" @bind="@p.IsActive" />
+        </div>
+    }
+</div>
+
+<div class="row border p-3">
+    <h3 class="secondary">Products Summary</h3>
+
+    @foreach (var p in products)
+    {
+        <div class="border p-2">
+        <p>Product Name: @p.Name</p>
+        <p>Product Status: @(p.IsActive ? "Active" : "Inactive")</p>
+        </div>
+    }
+</div>
+
+
+
+
+@code {
+    private string selectedProperty;
+    private Product product = new()
+    {
+        Id = 1,
+        Name = "Rose Candle",
+        IsActive = true,
+        Properties = new List<ProductProperty>()
+        {
+            new ProductProperty() { Id = 1, Key = "Color", Value = "Black" },
+            new ProductProperty() { Id = 2, Key = "Flavor", Value = "Rose Jasmine" },
+            new ProductProperty() { Id = 3, Key = "Size", Value = "20oz" },
+        }
+    };
+
+    private List<Product> products;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        products = new()
+        {
+            new Product()
+            {
+                Id = 1,
+                Name = "Midnight Blaze",
+                IsActive = false,
+                Properties = new List<ProductProperty>()
+                {
+                    new ProductProperty() { Id = 1, Key = "Color", Value = "Purple" },
+                    new ProductProperty() { Id = 2, Key = "Flavor", Value = "Midnight" },
+                    new ProductProperty() { Id = 3, Key = "Size", Value = "10oz" },
+                }
+            },
+            new Product()
+            {
+                Id = 2,
+                Name = "Blossom Lily",
+                IsActive = true,
+                Properties = new List<ProductProperty>()
+                {
+                    new ProductProperty() { Id = 1, Key = "Color", Value = "White" },
+                    new ProductProperty() { Id = 2, Key = "Flavor", Value = "Blossom" },
+                    new ProductProperty() { Id = 3, Key = "Size", Value = "20L" },
+                }
+            },
+        };
+    }
+}

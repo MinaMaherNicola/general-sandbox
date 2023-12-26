@@ -1,0 +1,71 @@
+﻿@page "/demoproduct"
+
+@using Tangy.Models.Models
+<h3>DemoProduct</h3>
+<div class="row">
+    @foreach (var product in products)
+    {
+        <div class="col-6 border p-3">
+            <h3>Product - @product.Id</h3>
+            <p>Name: @product.Name</p>
+            <label>Show Properties: </label>
+            <input type="checkbox" @bind="@product.IsActive" /> <br />
+            @if (product.IsActive)
+            {
+                @foreach (var property in product.Properties)
+                {
+                    <p>@property.Key - @property.Value</p>
+                }
+            }
+            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-warning">Edit</button>
+        </div>
+    }
+</div>
+@code {
+    private List<Product> products;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        products = new()
+        {
+            new Product()
+            {
+                Id = 1,
+                Name = "Midnight Blaze",
+                IsActive = false,
+                Properties = new List<ProductProperty>()
+                {
+                    new ProductProperty() { Id = 1, Key = "Color", Value = "Purple" },
+                    new ProductProperty() { Id = 2, Key = "Flavor", Value = "Midnight" },
+                    new ProductProperty() { Id = 3, Key = "Size", Value = "10oz" },
+                }
+            },
+            new Product()
+            {
+                Id = 2,
+                Name = "Blossom Lily",
+                IsActive = true,
+                Properties = new List<ProductProperty>()
+                {
+                    new ProductProperty() { Id = 1, Key = "Color", Value = "White" },
+                    new ProductProperty() { Id = 2, Key = "Flavor", Value = "Blossom" },
+                    new ProductProperty() { Id = 3, Key = "Size", Value = "20L" },
+                }
+            },
+            new Product()
+            {
+                Id = 3,
+                Name = "Wtv LQly",
+                IsActive = false,
+                Properties = new List<ProductProperty>()
+                {
+                    new ProductProperty() { Id = 1, Key = "Color", Value = "White" },
+                    new ProductProperty() { Id = 2, Key = "Flavor", Value = "Blossom" },
+                    new ProductProperty() { Id = 3, Key = "Size", Value = "20L" },
+                }
+            },
+        };
+    }
+}
