@@ -1,0 +1,42 @@
+﻿<div class="col-6 border p-3" @onclick="LastSelectedProductEvent">
+    <h3>Product - @Product.Id</h3>
+    <div>
+        <label>Add to favorites</label>
+        <input type="checkbox" @onchange="FavoriteCountUpdate" />
+    </div>
+    <p>Name: @Product.Name</p>
+    <p>RF From Parent <span>@FirstRenderFragment</span> <span>@SecondRenderFragment</span></p>
+    <label>Show Properties: </label>
+    <input type="checkbox" @bind="@Product.IsActive" /> <br />
+    @if (Product.IsActive)
+    {
+        @foreach (var property in Product.Properties)
+        {
+            <p>@property.Key - @property.Value</p>
+        }
+    }
+    <_EditDeleteButtons IsActive="@Product.IsActive" />
+</div>
+
+@code {
+    [Parameter]
+    public Product Product { get; set; }
+    [Parameter]
+    public EventCallback<bool> OnFavoriteUpdated { get; set; }
+    [Parameter]
+    public EventCallback<string> UpdateLastSelectedProduct { get; set; }
+    [Parameter]
+    public RenderFragment FirstRenderFragment { get; set; }
+    [Parameter]
+    public RenderFragment SecondRenderFragment { get; set; }
+
+    private async Task FavoriteCountUpdate(ChangeEventArgs e)
+    {
+        await OnFavoriteUpdated.InvokeAsync((bool)e.Value);
+    }
+
+    private async Task LastSelectedProductEvent()
+    {
+        await UpdateLastSelectedProduct.InvokeAsync(Product.Name);
+    }
+}

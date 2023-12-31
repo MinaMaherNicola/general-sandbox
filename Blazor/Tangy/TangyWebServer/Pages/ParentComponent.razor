@@ -1,0 +1,28 @@
+﻿@page "/parentComponent"
+
+<h3>Parent Child Relation</h3>
+
+<p>@MessageText</p>
+
+<_ChildComponent OnButtonClickMethod="ShowMessage" Title="This is from parent">
+    <ChildContent>Render fragement from parent!</ChildContent>
+    <DangerChildContent>Danger child content</DangerChildContent>
+</_ChildComponent>
+
+<_AnotherChildComponent Attributes="InputAttributes" />
+
+
+@code {
+    public string MessageText { get; set; } = "";
+
+    private void ShowMessage()
+    {
+        MessageText = "Tangy button clicked from child component";
+    }
+
+    public Dictionary<string, object> InputAttributes { get; set; } = new Dictionary<string, object>()
+    {
+        { "maxlength", 5 },
+        { "placeholder", "Enter Name From Parent" }
+    };
+}

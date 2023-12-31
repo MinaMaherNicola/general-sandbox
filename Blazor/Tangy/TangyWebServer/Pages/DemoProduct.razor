@@ -1,29 +1,22 @@
 ﻿@page "/demoproduct"
 
-@using Tangy.Models.Models
+
 <h3>DemoProduct</h3>
+<p>Favorites total: @selectedFavoriteCount</p>
+<p>Last seleected product: @lastSelectedProduct</p>
 <div class="row">
     @foreach (var product in products)
     {
-        <div class="col-6 border p-3">
-            <h3>Product - @product.Id</h3>
-            <p>Name: @product.Name</p>
-            <label>Show Properties: </label>
-            <input type="checkbox" @bind="@product.IsActive" /> <br />
-            @if (product.IsActive)
-            {
-                @foreach (var property in product.Properties)
-                {
-                    <p>@property.Key - @property.Value</p>
-                }
-            }
-            <button class="btn btn-danger">Delete</button>
-            <button class="btn btn-warning">Edit</button>
-        </div>
+        <_ProductComponent Product="product" OnFavoriteUpdated="FavoriteCountUpdate" UpdateLastSelectedProduct="SetLastSelectedProduct">
+            <FirstRenderFragment>#1</FirstRenderFragment>
+            <SecondRenderFragment>#2</SecondRenderFragment>
+        </_ProductComponent>
     }
 </div>
 @code {
     private List<Product> products;
+    private int selectedFavoriteCount = 0;
+    private string lastSelectedProduct = "";
 
     protected override void OnInitialized()
     {
@@ -67,5 +60,15 @@
                 }
             },
         };
+    }
+
+    private void FavoriteCountUpdate(bool isSelected)
+    {
+        if (isSelected) selectedFavoriteCount++;
+        else selectedFavoriteCount--;
+    }
+    private void SetLastSelectedProduct(string p)
+    {
+        lastSelectedProduct = p;
     }
 }
