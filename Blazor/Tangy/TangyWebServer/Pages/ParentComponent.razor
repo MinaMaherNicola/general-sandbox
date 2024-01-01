@@ -4,16 +4,19 @@
 
 <p>@MessageText</p>
 
-<_ChildComponent OnButtonClickMethod="ShowMessage" Title="This is from parent">
-    <ChildContent>Render fragement from parent!</ChildContent>
-    <DangerChildContent>Danger child content</DangerChildContent>
-</_ChildComponent>
+<CascadingValue Value="@GrandChildMessage" Name="MessageForGrandChild">
+    <_ChildComponent OnButtonClickMethod="ShowMessage" Title="This is from parent">
+        <ChildContent>Render fragement from parent!</ChildContent>
+        <DangerChildContent>Danger child content</DangerChildContent>
+    </_ChildComponent>
+</CascadingValue>
 
 <_AnotherChildComponent Attributes="InputAttributes" />
 
 
 @code {
     public string MessageText { get; set; } = "";
+    public string GrandChildMessage { get; set; } = "Cascading Value";
 
     private void ShowMessage()
     {
