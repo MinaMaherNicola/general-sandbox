@@ -1,4 +1,6 @@
-﻿<div>
+﻿@inject IJSRuntime jsRuntime
+
+<div>
     <div class="alert alert-info">@Title</div>
     @if (ChildContent is not null)
     {
@@ -22,4 +24,9 @@
     public RenderFragment DangerChildContent { get; set; }
     [Parameter]
     public EventCallback OnButtonClickMethod { get; set; }
+
+    public async Task ToastrSuccess()
+    {
+        await jsRuntime.ToastrSuccess("Operation Successful");
+    }
 }

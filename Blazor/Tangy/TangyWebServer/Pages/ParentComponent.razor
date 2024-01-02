@@ -5,7 +5,7 @@
 <p>@MessageText</p>
 
 <CascadingValue Value="@GrandChildMessage" Name="MessageForGrandChild">
-    <_ChildComponent OnButtonClickMethod="ShowMessage" Title="This is from parent">
+    <_ChildComponent @ref="childComponent" OnButtonClickMethod="ShowMessage" Title="This is from parent">
         <ChildContent>Render fragement from parent!</ChildContent>
         <DangerChildContent>Danger child content</DangerChildContent>
     </_ChildComponent>
@@ -13,8 +13,14 @@
 
 <_AnotherChildComponent Attributes="InputAttributes" />
 
+<div class="row">
+    <button class="btn btn-success" @onclick="() => childComponent.ToastrSuccess()">Access Child Component Method</button>
+</div>
+
 
 @code {
+    private _ChildComponent childComponent;
+
     public string MessageText { get; set; } = "";
     public string GrandChildMessage { get; set; } = "Cascading Value";
 
