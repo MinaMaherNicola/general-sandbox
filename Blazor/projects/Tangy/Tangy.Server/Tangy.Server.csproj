@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Tangy.DataAccess\Tangy.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Categories\" />
+  </ItemGroup>
+
 </Project>

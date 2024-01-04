@@ -1,0 +1,53 @@
+﻿@page "/category"
+@using Tangy.Business.Repositories.Contracts
+@using Tangy.Models.DTOs
+@inject ICategoryRepository categoryRepository
+
+<div class="row mt-4">
+    <div class="col-6">
+        <h4 class="card-title text-primary">Category List</h4>
+    </div>
+    <div class="col-4 offset-2">
+        <a href="category/create" class="btn btn-primary form-control">Add new category</a>
+    </div>
+
+    @if (categories.Any())
+    {
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in categories)
+                {
+                    <tr>
+                        <td>
+                            @category.Name
+                        </td>
+                        <td>
+                            <NavLink href=@($"category/edit/{category.Id}") class="btn btn-warning">Edit</NavLink>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    @if (isLoading)
+    {
+        <h1 class="text-center">LOADING....</h1>
+    }
+</div>
+
+@code {
+    private IEnumerable<CategoryDto> categories = Enumerable.Empty<CategoryDto>();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await categoryRepository.GetAll();
+        isLoading = false;
+    }
+}

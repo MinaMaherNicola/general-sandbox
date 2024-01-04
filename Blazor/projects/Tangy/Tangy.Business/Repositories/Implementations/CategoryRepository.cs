@@ -34,12 +34,12 @@ namespace Tangy.Business.Repositories.Implementations
 
         public async Task<CategoryDto> Get(Guid id)
         {
-            return mapper.Map<CategoryDto>(await context.Categories.FindAsync(id));
+            return mapper.Map<CategoryDto>(await context.Categories.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id));
         }
 
         public async Task<IEnumerable<CategoryDto>> GetAll()
         {
-            return mapper.Map<IEnumerable<CategoryDto>>(await context.Categories.ToListAsync());
+            return mapper.Map<IEnumerable<CategoryDto>>(await context.Categories.AsNoTracking().ToListAsync());
         }
 
         public async Task<CategoryDto> Update(CategoryDto categoryDto)
