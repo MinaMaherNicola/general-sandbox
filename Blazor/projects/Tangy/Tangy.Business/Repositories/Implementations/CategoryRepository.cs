@@ -37,9 +37,9 @@ namespace Tangy.Business.Repositories.Implementations
             return mapper.Map<CategoryDto>(await context.Categories.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id));
         }
 
-        public async Task<IEnumerable<CategoryDto>> GetAll()
+        public async Task<List<CategoryDto>> GetAll()
         {
-            return mapper.Map<IEnumerable<CategoryDto>>(await context.Categories.AsNoTracking().ToListAsync());
+            return mapper.Map<List<CategoryDto>>(await context.Categories.AsNoTracking().ToListAsync());
         }
 
         public async Task<CategoryDto> Update(CategoryDto categoryDto)

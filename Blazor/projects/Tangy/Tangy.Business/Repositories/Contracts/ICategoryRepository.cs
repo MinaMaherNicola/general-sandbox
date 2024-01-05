@@ -8,6 +8,6 @@ namespace Tangy.Business.Repositories.Contracts
         Task<CategoryDto> Update(CategoryDto categoryDto);
         Task<int> Delete(Guid id);
         Task<CategoryDto> Get(Guid id);
-        Task<IEnumerable<CategoryDto>> GetAll();
+        Task<List<CategoryDto>> GetAll();
     }
 }
