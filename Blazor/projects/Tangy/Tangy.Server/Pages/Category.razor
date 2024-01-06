@@ -62,7 +62,6 @@
     private async void DeleteCategory(Guid id)
     {
         isLoading = true;
-        await Task.Delay(3000);
         if (await categoryRepository.Delete(id) != 0)
         {
             categories.Remove(categories.Single(c => c.Id == id));
