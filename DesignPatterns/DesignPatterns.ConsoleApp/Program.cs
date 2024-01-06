@@ -1,4 +1,6 @@
-﻿using DesignPatterns.ConsoleApp.CreationalPatterns.AbstractFactoryPattern;
+﻿using DesignPatterns.ConsoleApp.StructuralPatterns.AdapterPattern.Adapter;
+using DesignPatterns.ConsoleApp.StructuralPatterns.AdapterPattern.LegacyData;
+using DesignPatterns.ConsoleApp.StructuralPatterns.AdapterPattern.NewData;
 
 namespace DesignPatterns.ConsoleApp
 {
@@ -6,7 +8,8 @@ namespace DesignPatterns.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AbstractFactoryPatternTestDrive.Start();
+            NewUser newUser = new NewUserAdapter(LegacyUser.GetUser());
+            Console.WriteLine($"{newUser.Name}");
         }
     }
 }
