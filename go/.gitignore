@@ -4,3 +4,4 @@
 !*.mod
 !Makefile
 !.gitignore
+!*.txt
