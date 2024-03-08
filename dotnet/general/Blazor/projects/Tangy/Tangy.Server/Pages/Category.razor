@@ -1,0 +1,73 @@
+﻿@page "/category"
+
+@using Tangy.Business.Repositories.Contracts
+@using Tangy.Models.DTOs
+@using Tangy.Server.Components.Categories
+
+@inject ICategoryRepository categoryRepository
+@inject IJSRuntime jsRuntime
+
+<div class="row mt-4">
+    <div class="col-6">
+        <h4 class="card-title text-primary">Category List</h4>
+    </div>
+    <div class="col-4 offset-2">
+        <a href="category/create" class="btn btn-primary form-control">Add new category</a>
+    </div>
+
+    @if (categories.Any())
+    {
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in categories)
+                {
+                    <tr>
+                        <td>
+                            @category.Name
+                        </td>
+                        <td>
+                            <NavLink href=@($"category/edit/{category.Id}") class="btn btn-warning">Edit</NavLink>
+                            <button @onclick="() => toBeDeletedCategory = category" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <_DeleteConfirmation IsLoading="isLoading" ToBeDeletedCategory="toBeDeletedCategory" DeleteCategoryFunctionality="(Guid id) => DeleteCategory(id)" />
+    }
+    @if (isLoading)
+    {
+        <h1 class="text-center">LOADING....</h1>
+    }
+</div>
+
+@code {
+    private List<CategoryDto> categories = new();
+    private CategoryDto toBeDeletedCategory;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await categoryRepository.GetAll();
+        toBeDeletedCategory = categories.FirstOrDefault()!;
+        isLoading = false;
+    }
+
+    private async void DeleteCategory(Guid id)
+    {
+        isLoading = true;
+        if (await categoryRepository.Delete(id) != 0)
+        {
+            categories.Remove(categories.Single(c => c.Id == id));
+        }
+        isLoading = false;
+        await jsRuntime.InvokeVoidAsync("hideModal");
+        StateHasChanged();
+    }
+}

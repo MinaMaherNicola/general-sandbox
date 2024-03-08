@@ -1,0 +1,66 @@
+﻿@page "/category/create"
+@page "/category/edit/{Id:guid}"
+
+@using Tangy.Business.Repositories.Contracts
+@using Tangy.Models.DTOs
+
+@inject ICategoryRepository categoryRepository
+@inject NavigationManager navManager
+
+<div class="row my-2">
+    <h3 class="card-title text-primary mb-3 ml-3">@title Category</h3>
+
+    @if (isLoading)
+    {
+        <h1>LOADING...</h1>
+    }
+    else
+    {
+        <div class="col-12">
+            <EditForm Model="category" OnValidSubmit="Upsert">
+                <DataAnnotationsValidator />
+                @* <ValidationSummary /> *@
+                <div class="form-group">
+                    <label>Name</label>
+                    <InputText @bind-Value="category.Name" class="form-control" />
+                    <ValidationMessage For="() => category.Name" />
+                </div>
+                <div class="form-group mt-2">
+                    <button type="submit" class="btn btn-primary">@title</button>
+                    <NavLink class="btn btn-secondary" href="category">Back to Index</NavLink>
+                </div>
+            </EditForm>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public Guid? Id { get; set; }
+    private CategoryDto category = new();
+    private string title = "Create";
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id.HasValue)
+        {
+            category = await categoryRepository.Get(Id.Value);
+            title = "Edit";
+        }
+        isLoading = false;
+    }
+
+    private async Task Upsert()
+    {
+        if (Id.HasValue)
+        {
+            await categoryRepository.Update(category);
+        }
+        else
+        {
+            await categoryRepository.Create(category);
+        }
+        navManager.NavigateTo("category");
+    }
+}

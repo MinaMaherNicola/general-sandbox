@@ -1,0 +1,19 @@
+﻿@page "/"
+@inject ILogger<Index> logger;
+
+<CascadingAuthenticationState>
+    <AuthorizeView>
+        <NotAuthorized>
+            <h1 class="welcome-heading">Welcome to Cashato</h1>
+            <p class="welcome-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas dui id ornare arcu odio ut sem nulla pharetra. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Nec tincidunt praesent semper feugiat nibh. Faucibus et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Vestibulum rhoncus est pellentesque elit ullamcorper. Ornare arcu odio ut sem nulla pharetra. Viverra vitae congue eu consequat. Turpis massa tincidunt dui ut ornare. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin. Sit amet mauris commodo quis imperdiet massa. Donec pretium vulputate sapien nec. Cursus euismod quis viverra nibh cras pulvinar mattis nunc. Eu turpis egestas pretium aenean pharetra magna ac. Tortor condimentum lacinia quis vel eros. Viverra adipiscing at in tellus integer feugiat scelerisque. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Ultrices dui sapien eget mi proin sed.</p>
+            <a class="btn-light" href="/Identity/Account/Register">Register Now!</a>
+        </NotAuthorized>
+    </AuthorizeView>
+</CascadingAuthenticationState>
+
+@code {
+    protected override void OnInitialized()
+    {
+        logger.LogCritical("This is critical btw");
+    }
+}

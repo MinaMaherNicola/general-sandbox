@@ -1,0 +1,1 @@
+I Created the factory method design pattern to emulate the need of creating different style of pizzas.

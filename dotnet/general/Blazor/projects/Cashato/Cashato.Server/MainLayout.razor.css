@@ -1,0 +1,61 @@
+﻿#main-header {
+    padding: 1.5rem;
+    background-color: var(--main-dark);
+    box-shadow: 0rem 1rem 1.5rem rgba(0, 0, 0, .2);
+}
+
+#main-header a,
+#main-header ::deep .nav-link {
+    color: var(--white);
+    text-decoration: none;
+}
+
+#main-header ul {
+    list-style: none;
+}
+
+#main-header .logo {
+    font-size: 1.8rem;
+}
+
+#main-header #main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main-header #main-nav .nav-items .nav-item .logout-link {
+    display: inline-block;
+    margin-right: .5rem;
+    font-size: 1.6rem;
+    margin-left: 5rem;
+}
+
+#main-header #main-nav .nav-items .nav-item {
+    display: inline-block;
+    margin-right: .5rem;
+    font-size: 1.6rem;
+}
+
+#main-header #main-nav .nav-items .nav-item ::deep .nav-link {
+    padding: 1rem 2rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#main-header #main-nav .nav-items .nav-item ::deep .nav-link:hover {
+    background-color: var(--main-light);
+    color: var(--main-dark);
+}
+
+::deep .nav-link.active {
+    background-color: var(--main-light);
+    color: var(--main-dark) !important;
+    opacity: 1;
+    transition: none;
+    transition: opacity 0.5s ease-in-out !important;
+}
+
+::deep .nav-link.active:hover {
+    opacity: 0.8;
+}

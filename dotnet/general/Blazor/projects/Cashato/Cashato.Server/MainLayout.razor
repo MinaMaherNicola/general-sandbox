@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@inherits LayoutComponentBase
+
+
+<CascadingAuthenticationState>
+    <header id="main-header">
+        <nav id="main-nav">
+            <div class="container">
+                <a class="logo" href="/"><h2>Cashato</h2></a>
+                <ul class="nav-items">
+                    <AuthorizeView>
+                        <Authorized>
+                            <li class="nav-item">
+                                <NavLink class="nav-link" href="/">Home</NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink class="nav-link" href="/a">Account</NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink class="nav-link" href="/b">Send</NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink class="nav-link" href="/c">Request</NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink class="nav-link logout-link" href="/Identity/Account/Logout">Logout</NavLink>
+                            </li>
+                        </Authorized>
+                        <NotAuthorized>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Identity/Account/Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Identity/Account/Register">Register</a>
+                            </li>
+                        </NotAuthorized>
+                    </AuthorizeView>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</CascadingAuthenticationState>
+<div class="container">
+    <main>
+        @Body
+    </main>
+</div>

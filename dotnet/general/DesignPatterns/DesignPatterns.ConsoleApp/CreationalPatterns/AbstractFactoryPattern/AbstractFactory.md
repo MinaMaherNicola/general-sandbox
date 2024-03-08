@@ -1,0 +1,1 @@
+I implemented the abstract factory example to be a factory of wild animals.

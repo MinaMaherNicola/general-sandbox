@@ -1,0 +1,46 @@
+﻿@page "/simple-diagram"
+
+<h3>SimpleDiagram</h3>
+
+<div class="diagram-container">
+    <CascadingValue Value="Diagram" IsFixed="false">
+        <DiagramCanvas></DiagramCanvas>
+    </CascadingValue>
+</div>
+
+@code {
+    private BlazorDiagram Diagram { get; set; } = null!;
+
+    protected override void OnInitialized()
+    {
+        Diagram = new BlazorDiagram(new BlazorDiagramOptions()
+        {
+            AllowMultiSelection = true,
+            Zoom =
+            {
+                Enabled = true
+            },
+            Links =
+            {
+                DefaultRouter = new NormalRouter(),
+                DefaultPathGenerator = new SmoothPathGenerator()
+            }
+        });
+
+        var firstNode = Diagram.Nodes.Add(new NodeModel(position: new Point(50, 50))
+        {
+            Title = "Node 1"
+        });
+        var secondNode = Diagram.Nodes.Add(new NodeModel(position: new Point(200, 100))
+        {
+            Title = "Node 2"
+        });
+        var leftPort = secondNode.AddPort(PortAlignment.Left);
+        var rightPort = secondNode.AddPort(PortAlignment.Right);
+
+        var sourceAnchor = new ShapeIntersectionAnchor(firstNode);
+        
+        var targetAnchor = new SinglePortAnchor(leftPort);
+        var link = Diagram.Links.Add(new LinkModel(sourceAnchor, targetAnchor));
+    }
+}

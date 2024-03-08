@@ -1,0 +1,86 @@
+﻿@page "/product"
+
+@using Tangy.Business.Repositories.Contracts
+@using Tangy.Models.DTOs
+@using Tangy.Server.Components.Products
+
+@inject IProductRepository productRepository
+@inject IJSRuntime jsRuntime
+
+<div class="row mt-4">
+    <div class="col-6">
+        <h4 class="card-title text-primary">Products List</h4>
+    </div>
+    <div class="col-4 offset-2">
+        <a href="product/create" class="btn btn-primary form-control">Add new product</a>
+    </div>
+
+    @if (products.Any())
+    {
+        <table class="table table-bordered mt-5">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Shop Favorite</th>
+                    <th>Customer Favorite</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in products)
+                {
+                    <tr>
+                        <td>
+                            @product.Name
+                        </td>
+                        <td>
+                            <input type="checkbox" disabled value="@product.ShopFavorite" />
+                        </td>
+                        <td>
+                            <input type="checkbox" disabled value="@product.CustomerFavorite" />
+                        </td>
+                        <td>
+                            @product.Category.Name
+                        </td>
+                        <td>
+                            <NavLink href=@($"product/edit/{product.Id}") class="btn btn-warning">Edit</NavLink>
+                            <NavLink href=@($"product/price/{product.Id}") class="btn btn-success">Price</NavLink>
+                            <button @onclick="() => toBeDeletedProduct = product" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <_DeleteConfirmation IsLoading="isLoading" ToBeDeletedProduct="toBeDeletedProduct" DeleteProductFunctionality="(Guid id) => DeleteProduct(id)" />
+    }
+    @if (isLoading)
+    {
+        <h1 class="text-center">LOADING....</h1>
+    }
+</div>
+
+@code {
+    private List<ProductDto> products = new();
+    private ProductDto toBeDeletedProduct;
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await productRepository.GetAll();
+        toBeDeletedProduct = products.FirstOrDefault()!;
+        isLoading = false;
+    }
+
+    private async void DeleteProduct(Guid id)
+    {
+        isLoading = true;
+        if (await productRepository.Delete(id) != 0)
+        {
+            products.Remove(products.Single(c => c.Id == id));
+        }
+        isLoading = false;
+        await jsRuntime.InvokeVoidAsync("hideModal");
+        StateHasChanged();
+    }
+}

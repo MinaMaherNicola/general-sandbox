@@ -1,0 +1,36 @@
+﻿@page "/learnRouting/{Parameter1:int}/{Parameter2}"
+@page "/learnRouting"
+@page "/test"
+@using Microsoft.AspNetCore.WebUtilities
+
+@inject NavigationManager NavManager
+
+<h3>LearnRouting</h3>
+
+<h4>Parameter 1: @Parameter1</h4>
+<h4>Parameter 2: @Parameter2</h4>
+
+<h4>Param 1: @Param1</h4>
+<h4>Param 2: @Param2</h4>
+
+<a href="learnRouting?Param1=Hi&Param2=Blazor" class="btn btn-primary">Navigate to query params</a>
+<button class="btn btn-success" @onclick="LoadParameters">Load parameters</button>
+
+@code {
+    [Parameter]
+    public int Parameter1 { get; set; }
+    [Parameter]
+    public string Parameter2 { get; set; }
+
+    public string Param1 { get; set; }
+    public string Param2 { get; set; }
+
+    private void LoadParameters()
+    {
+        var uri = new Uri(NavManager.Uri);
+        var queryParameters = QueryHelpers.ParseQuery(uri.Query);
+
+        Param1 = queryParameters["Param1"];
+        Param2 = queryParameters["Param2"];
+    }
+}

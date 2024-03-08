@@ -1,0 +1,30 @@
+﻿@page "/accounts/create"
+@using Cashato.Business.Dtos.Accounts
+@using Cashato.DB.Enums
+@using Microsoft.AspNetCore.Components.Forms
+@attribute [Authorize]
+
+<h1>Create an account!</h1>
+<EditForm Model="accountRequest">
+    <div class="form-control">
+        <label>Balance:</label>
+        <InputNumber placeholder="2000" @bind-Value="accountRequest.Balance" />
+    </div>
+
+    <div class="form-control">
+        <label>Account Type:</label>
+        <InputSelect @bind-Value="accountRequest.Type">
+            <option selected disabled>Select a type</option>
+            @foreach (var enumValue in Enum.GetValues(typeof(AccountTypeEnum)))
+            {
+                <option value="@enumValue">@enumValue</option>
+            }
+        </InputSelect>
+    </div>
+
+    <button type="submit">Create</button>
+</EditForm>
+
+@code {
+    private AddAccountRequest accountRequest = new AddAccountRequest();
+}

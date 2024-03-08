@@ -1,0 +1,37 @@
+﻿@page "/parentComponent"
+
+<h3>Parent Child Relation</h3>
+
+<p>@MessageText</p>
+
+<CascadingValue Value="@GrandChildMessage" Name="MessageForGrandChild">
+    <_ChildComponent @ref="childComponent" OnButtonClickMethod="ShowMessage" Title="This is from parent">
+        <ChildContent>Render fragement from parent!</ChildContent>
+        <DangerChildContent>Danger child content</DangerChildContent>
+    </_ChildComponent>
+</CascadingValue>
+
+<_AnotherChildComponent Attributes="InputAttributes" />
+
+<div class="row">
+    <button class="btn btn-success" @onclick="() => childComponent.ToastrSuccess()">Access Child Component Method</button>
+</div>
+
+
+@code {
+    private _ChildComponent childComponent;
+
+    public string MessageText { get; set; } = "";
+    public string GrandChildMessage { get; set; } = "Cascading Value";
+
+    private void ShowMessage()
+    {
+        MessageText = "Tangy button clicked from child component";
+    }
+
+    public Dictionary<string, object> InputAttributes { get; set; } = new Dictionary<string, object>()
+    {
+        { "maxlength", 5 },
+        { "placeholder", "Enter Name From Parent" }
+    };
+}

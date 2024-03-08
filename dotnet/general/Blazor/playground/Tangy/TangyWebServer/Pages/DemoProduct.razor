@@ -1,0 +1,74 @@
+﻿@page "/demoproduct"
+
+
+<h3>DemoProduct</h3>
+<p>Favorites total: @selectedFavoriteCount</p>
+<p>Last seleected product: @lastSelectedProduct</p>
+<div class="row">
+    @foreach (var product in products)
+    {
+        <_ProductComponent Product="product" OnFavoriteUpdated="FavoriteCountUpdate" UpdateLastSelectedProduct="SetLastSelectedProduct">
+            <FirstRenderFragment>#1</FirstRenderFragment>
+            <SecondRenderFragment>#2</SecondRenderFragment>
+        </_ProductComponent>
+    }
+</div>
+@code {
+    private List<Product> products;
+    private int selectedFavoriteCount = 0;
+    private string lastSelectedProduct = "";
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        products = new()
+        {
+            new Product()
+            {
+                Id = 1,
+                Name = "Midnight Blaze",
+                IsActive = false,
+                Properties = new List<ProductProperty>()
+                {
+                    new ProductProperty() { Id = 1, Key = "Color", Value = "Purple" },
+                    new ProductProperty() { Id = 2, Key = "Flavor", Value = "Midnight" },
+                    new ProductProperty() { Id = 3, Key = "Size", Value = "10oz" },
+                }
+            },
+            new Product()
+            {
+                Id = 2,
+                Name = "Blossom Lily",
+                IsActive = true,
+                Properties = new List<ProductProperty>()
+                {
+                    new ProductProperty() { Id = 1, Key = "Color", Value = "White" },
+                    new ProductProperty() { Id = 2, Key = "Flavor", Value = "Blossom" },
+                    new ProductProperty() { Id = 3, Key = "Size", Value = "20L" },
+                }
+            },
+            new Product()
+            {
+                Id = 3,
+                Name = "Wtv LQly",
+                IsActive = false,
+                Properties = new List<ProductProperty>()
+                {
+                    new ProductProperty() { Id = 1, Key = "Color", Value = "White" },
+                    new ProductProperty() { Id = 2, Key = "Flavor", Value = "Blossom" },
+                    new ProductProperty() { Id = 3, Key = "Size", Value = "20L" },
+                }
+            },
+        };
+    }
+
+    private void FavoriteCountUpdate(bool isSelected)
+    {
+        if (isSelected) selectedFavoriteCount++;
+        else selectedFavoriteCount--;
+    }
+    private void SetLastSelectedProduct(string p)
+    {
+        lastSelectedProduct = p;
+    }
+}

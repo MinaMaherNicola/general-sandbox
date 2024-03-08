@@ -1,0 +1,14 @@
+﻿@page "/identity/account/logout"
+@using Microsoft.AspNetCore.Authorization
+@inject SignInManager<IdentityUser> signInManager
+@attribute [AllowAnonymous]
+
+@{
+    @functions {
+        public async Task<IActionResult> OnGetAsync()
+        {
+            await signInManager.SignOutAsync();
+            return Redirect("/");
+        }
+    }
+}

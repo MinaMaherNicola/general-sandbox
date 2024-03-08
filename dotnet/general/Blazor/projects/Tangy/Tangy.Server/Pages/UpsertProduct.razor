@@ -1,0 +1,157 @@
+﻿@page "/product/create"
+@page "/product/edit/{Id:guid}"
+
+@using Tangy.Business.Repositories.Contracts
+@using Tangy.Models.DTOs
+@using Tangy.Server.Service.Contracts
+
+@inject IProductRepository productRepository
+@inject ICategoryRepository categoryRepository
+@inject IFileUpload fileUpload
+@inject NavigationManager navManager
+
+<div class="row my-2">
+    <h3 class="card-title text-primary mb-3">@title Product</h3>
+
+    @if (isLoading)
+    {
+        <h1>LOADING...</h1>
+    }
+    else
+    {
+        <div class="col-md-10">
+            <EditForm Model="product" OnValidSubmit="Upsert">
+                <DataAnnotationsValidator />
+                <div class="form-group">
+                    <label>Name</label>
+                    <InputText @bind-Value="product.Name" class="form-control" />
+                    <ValidationMessage For="() => product.Name" />
+                </div>
+                <div class="form-group">
+                    <label>Color</label>
+                    <InputText @bind-Value="product.Color" class="form-control" />
+                    <ValidationMessage For="() => product.Color" />
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <InputTextArea @bind-Value="product.Description" class="form-control" />
+                    <ValidationMessage For="() => product.Description" />
+                </div>
+                <div class="row pt-3">
+                    <div class="btn-group col-6">
+                        <div class="form-check">
+                            <InputCheckbox @bind-Value="product.ShopFavorite" class="form-check-input" />
+                            <label>Shop Favorite</label>
+                        </div>
+                    </div>
+                    <div class="btn-group col-6">
+                        <div class="form-check">
+                            <InputCheckbox @bind-Value="product.CustomerFavorite" class="form-check-input" />
+                            <label>Customer Favorite</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pt-3">
+                    <label>Category</label>
+                    <InputSelect @bind-Value="product.CategoryId" class="form-select">
+                        <option selected value="" disabled>Select category</option>
+                        @foreach(var category in categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => product.CategoryId" />
+                </div>
+                <div class="btn-group pt-3">
+                    <InputFile OnChange="HandleImageUpload" @bind-Value="product.ImageUrl" />
+                </div>
+                <div class="form-group mt-2">
+                    <button type="submit" class="btn btn-primary">@title</button>
+                    <NavLink class="btn btn-secondary" href="product">Back to Index</NavLink>
+                </div>
+            </EditForm>
+        </div>
+        <div class="col-md-2">
+            <img src="@product.ImageUrl" class="w-100" />
+        </div>
+    }
+
+    Name: @product.Name
+    Color: @product.Color
+    Description: @product.Description
+    Customer: @product.CustomerFavorite
+    Shop: @product.ShopFavorite
+    CategoryId: @product.CategoryId
+    Image: @product.ImageUrl
+</div>
+
+@code {
+    [Parameter]
+    public Guid? Id { get; set; }
+    private ProductDto product = new()
+    {
+        ImageUrl = "/images/default.jpg"
+    };
+    private string title = "Create";
+    private bool isLoading = true;
+    private List<CategoryDto> categories;
+    private string oldImage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id.HasValue)
+        {
+            product = await productRepository.Get(Id.Value);
+            title = "Edit";
+            oldImage = product.ImageUrl;
+        }
+        categories = await categoryRepository.GetAll();
+        isLoading = false;
+    }
+
+    private async Task Upsert()
+    {
+        if (Id.HasValue)
+        {
+            if (oldImage.ToLower() != product.ImageUrl.ToLower())
+            {
+                fileUpload.DeleteFile(oldImage);
+            }
+            await productRepository.Update(product);
+        }
+        else
+        {
+            await productRepository.Create(product);
+        }
+        navManager.NavigateTo("product");
+    }
+
+    private async Task HandleImageUpload(InputFileChangeEventArgs e)
+    {
+        isLoading = true;
+        try
+        {
+            if (e.GetMultipleFiles().Count > 0)
+            {
+                foreach (var file in e.GetMultipleFiles())
+                {
+                    FileInfo fileInfo = new FileInfo(file.Name);
+                    if (fileInfo.Extension.ToLower() == ".jpg" ||
+                        fileInfo.Extension.ToLower() == ".png" ||
+                        fileInfo.Extension.ToLower() == ".jpeg")
+                    {
+                        product.ImageUrl = await fileUpload.UploadFile(file);
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
