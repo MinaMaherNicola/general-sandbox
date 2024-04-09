@@ -1,15 +1,8 @@
-﻿using System.Collections.ObjectModel;
-using System.Text;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System.Text;
 
 namespace Consumer;
-
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System;
-using System.Text;
-using System.Threading;
 
 public static class Program
 {
