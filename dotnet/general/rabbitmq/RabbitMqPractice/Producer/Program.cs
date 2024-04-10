@@ -16,11 +16,15 @@ public static class Program
 
         const string message = "Hello from producer ";
 
-        for (int i = 0; i < 40; i++)
+        var properties = channel.CreateBasicProperties();
+        properties.Persistent = true;
+
+        for (int i = 0; i < 30; i++)
         {
-            channel.BasicPublish(exchange: string.Empty, routingKey: "Hello", basicProperties: null, body: Encoding.UTF8.GetBytes(message + i));
+            channel.BasicPublish(exchange: string.Empty, routingKey: "Hello", basicProperties: properties, body: Encoding.UTF8.GetBytes(message + i));
         }
-        
+
         Console.WriteLine("Producers sent a message");
+
     }
 }

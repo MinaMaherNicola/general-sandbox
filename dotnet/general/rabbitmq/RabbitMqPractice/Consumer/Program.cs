@@ -12,6 +12,7 @@ public static class Program
         using var connection = factory.CreateConnection();
         using var channel = connection.CreateModel();
         channel.QueueDeclare(queue: "Hello", durable: true, exclusive: false, autoDelete: false, arguments: null);
+        channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
 
         Console.WriteLine("Consumer waiting for messages");
 
@@ -22,7 +23,7 @@ public static class Program
             var body = eventArgs.Body.ToArray();
             Console.WriteLine($"Consumer received: {Encoding.UTF8.GetString(body)}");
             channel.BasicAck(deliveryTag: eventArgs.DeliveryTag, multiple: false);
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
         };
 
         channel.BasicConsume(queue: "Hello", autoAck: false, consumer: consumer);
