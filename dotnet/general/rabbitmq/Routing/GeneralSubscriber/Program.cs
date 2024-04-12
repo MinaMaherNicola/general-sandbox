@@ -13,7 +13,7 @@ class Program
         using var channel = connection.CreateModel();
         
         channel.ExchangeDeclare("direct_logs", ExchangeType.Direct);
-        var queueName = channel.QueueDeclare();
+        var queueName = channel.QueueDeclare().QueueName;
         channel.QueueBind(queueName, "direct_logs", "info");
 
         Console.WriteLine("Info subscriber waiting for logs");
