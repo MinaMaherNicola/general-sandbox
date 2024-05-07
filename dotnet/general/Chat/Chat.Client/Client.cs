@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.SignalR.Client;
 
 namespace Chat.Client;
 
-public class Client : IClient
+public class Client : IClient, IServerActions
 {
     private readonly HubConnection _connection;
 
@@ -21,6 +21,11 @@ public class Client : IClient
         await _connection.StartAsync();
     }
 
+    public async Task ChangeUsername(string username)
+    {
+        await _connection.InvokeAsync(nameof(IServerActions.ChangeUsername), username);
+    }
+
     public async Task ReceiveMessageAsync(string message)
     {
         Console.WriteLine(message);
@@ -29,7 +34,7 @@ public class Client : IClient
 
     public async Task SendMessageAsync(string message)
     {
-        await _connection.InvokeAsync(nameof(IClient.SendMessageAsync), message);
+        await _connection.InvokeAsync(nameof(IServerActions.SendMessageAsync), message);
     }
 
     public async Task<string?> GetConnectionId()
