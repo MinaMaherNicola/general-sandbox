@@ -14,12 +14,12 @@ while (string.IsNullOrWhiteSpace(await client.GetConnectionId()))
     await client.StartAsync();
 }
 string username = await client.GetConnectionId() ?? throw new InvalidOperationException();
+string? room = null;
 Console.WriteLine($"You're connected to the server with connection-id: {username}");
 Console.WriteLine("-------------------------------------------");
 Console.WriteLine("Type -h for help");
 while (true)
 {
-    Console.Write($"{username}: ");
     string? input = Console.ReadLine();
 
     if (string.IsNullOrWhiteSpace(input)) continue;
@@ -34,12 +34,17 @@ while (true)
     if (input.StartsWith("-h", StringComparison.OrdinalIgnoreCase))
     {
         Console.WriteLine("1. type '-u username' to change your username");
-        Console.WriteLine("1. type '-j room' to create/enter group");
+        Console.WriteLine("2. type '-j room' to create/enter room");
     }
     else if (input.StartsWith("-u", StringComparison.OrdinalIgnoreCase) && input.Split(' ').Length > 1)
     {
         username = input.Split(' ')[1];
         await client.ChangeUsername(input);
+    }
+    else if (input.StartsWith("-j", StringComparison.OrdinalIgnoreCase) && input.Split(' ').Length > 1)
+    {
+        room = input.Split(' ')[1];
+        await client.JoinRoom(room);
     }
     else
     {

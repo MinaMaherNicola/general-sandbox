@@ -26,6 +26,11 @@ public class Client : IClient, IServerActions
         await _connection.InvokeAsync(nameof(IServerActions.ChangeUsername), username);
     }
 
+    public async Task JoinRoom(string room)
+    {
+        await _connection.InvokeAsync(nameof(IServerActions.JoinRoom), room);
+    }
+
     public async Task ReceiveMessageAsync(string message)
     {
         Console.WriteLine(message);

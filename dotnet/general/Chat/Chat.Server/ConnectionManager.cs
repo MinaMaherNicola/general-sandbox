@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 namespace Chat.Server;
 
 public static class ConnectionManager
