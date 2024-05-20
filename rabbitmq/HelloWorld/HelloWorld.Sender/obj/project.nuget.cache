@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "kYkiDg3eI4DYy07JCUSo27lRQwFXu9S36gEcImOi8FZwRfOAu2H3d4Cjx9PoUIEv0qGMV6agchC4zbTfETMZBg==",
+  "success": true,
+  "projectFilePath": "/home/mina/code/languages-sandbox/rabbitmq/HelloWorld/HelloWorld.Sender/HelloWorld.Sender.csproj",
+  "expectedPackageFiles": [
+    "/home/mina/.nuget/packages/rabbitmq.client/6.8.1/rabbitmq.client.6.8.1.nupkg.sha512",
+    "/home/mina/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
+    "/home/mina/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

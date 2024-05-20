@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld.Sender", "HelloWorld.Sender\HelloWorld.Sender.csproj", "{97B612B2-11A4-4BD0-9C01-3254F857A2CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld.Receiver", "HelloWorld.Receiver\HelloWorld.Receiver.csproj", "{6025E3DC-7AB3-4B28-9DBF-5D041965264A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97B612B2-11A4-4BD0-9C01-3254F857A2CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B612B2-11A4-4BD0-9C01-3254F857A2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B612B2-11A4-4BD0-9C01-3254F857A2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B612B2-11A4-4BD0-9C01-3254F857A2CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6025E3DC-7AB3-4B28-9DBF-5D041965264A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6025E3DC-7AB3-4B28-9DBF-5D041965264A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6025E3DC-7AB3-4B28-9DBF-5D041965264A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6025E3DC-7AB3-4B28-9DBF-5D041965264A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
