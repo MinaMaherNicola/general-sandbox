@@ -1,7 +1,0 @@
-*
-!*/
-!*.go
-!*.mod
-!Makefile
-!.gitignore
-!*.txt
