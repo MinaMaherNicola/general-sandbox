@@ -1,0 +1,13 @@
+services:
+  redis-server:
+    image: 'redis:7.2.5-alpine'
+    ports:
+      - '6379:6379'
+    restart: always
+  node-container:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - redis-server
+    restart: always
