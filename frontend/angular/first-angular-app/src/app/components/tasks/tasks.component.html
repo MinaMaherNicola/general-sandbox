@@ -1,0 +1,24 @@
+@if (showAddTask) {
+<app-wrapper>
+	<app-add-task
+		[userId]="id"
+		(toggleForm)="toggleAddTask()"
+		(addTask)="addNewTask($event)"
+	/>
+</app-wrapper>
+}
+<section id="tasks">
+	<header>
+		@if (name) {
+		<h2>{{ name }}'s Tasks</h2>
+		}
+		<menu>
+			<button (click)="toggleAddTask()">Add Task</button>
+		</menu>
+	</header>
+	<ul>
+		@for (task of selectedUserTasks; track task.id) {
+		<app-task [task]="task" (completedTaskId)="markTaskAsCompleted($event)" />
+		}
+	</ul>
+</section>
