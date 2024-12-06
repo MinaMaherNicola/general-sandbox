@@ -20,15 +20,15 @@ internal abstract class Program
 
         var consumer = new AsyncEventingBasicConsumer(channel);
 
-        consumer.ReceivedAsync += async (sender, @event) =>
+        consumer.ReceivedAsync += async (_, ea) =>
         {
-            string message = Encoding.UTF8.GetString(@event.Body.ToArray());
+            string message = Encoding.UTF8.GetString(ea.Body.ToArray());
 
             Console.WriteLine($"Consumer 2 received {message}");
 
             await Task.Delay(2000);
 
-            await channel.BasicAckAsync(@event.DeliveryTag, false);
+            await channel.BasicAckAsync(ea.DeliveryTag, false);
         };
 
         await channel.BasicConsumeAsync("hello", autoAck: false, consumer: consumer);
