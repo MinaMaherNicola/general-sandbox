@@ -10,7 +10,7 @@ internal abstract class Program
 {
     private static async Task Main(string[] args)
     {
-        await using MqBuilder builder = new();
+        await using RabbitMq builder = new();
 
         var channel = builder.GetChannel();
         
