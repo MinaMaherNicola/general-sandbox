@@ -16,7 +16,7 @@ internal abstract class Program
         
         await channel.QueueDeclareAsync(queue: "hello", false, false, false, arguments: null);
 
-        
+        await channel.BasicQosAsync(prefetchSize: 0, prefetchCount: 1, global: false);
 
         var consumer = new AsyncEventingBasicConsumer(channel);
 
@@ -24,7 +24,7 @@ internal abstract class Program
         {
             string message = Encoding.UTF8.GetString(@event.Body.ToArray());
 
-            Console.WriteLine($"Consumer 1 received {message}");
+            Console.WriteLine($"Consumer 2 received {message}");
 
             await Task.Delay(2000);
 
