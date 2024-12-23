@@ -5,7 +5,7 @@ namespace QueueBuilder;
 
 public class RabbitMq : IAsyncDisposable
 {
-    private readonly IConnection _connectionFactory;
+    private readonly IConnection _connection;
     private readonly IChannel _channel;
 
     public RabbitMq()
@@ -15,8 +15,8 @@ public class RabbitMq : IAsyncDisposable
             HostName = "localhost",
         };
         
-        _connectionFactory = factory.CreateConnectionAsync().Result;
-        _channel = _connectionFactory.CreateChannelAsync().Result;
+        _connection = factory.CreateConnectionAsync().Result;
+        _channel = _connection.CreateChannelAsync().Result;
     }
     
     public IChannel GetChannel()
@@ -24,7 +24,7 @@ public class RabbitMq : IAsyncDisposable
         return _channel;
     }
 
-    public async Task EnterSendMode(string exchangeName, string queueName)
+    public async Task EnterSendMode(string exchangeName, string queueName, string? routingKey = null)
     {
         while (true)
         {
@@ -36,7 +36,7 @@ public class RabbitMq : IAsyncDisposable
 
                 if (key.Key == ConsoleKey.S)
                 {
-                    await SendMessage(exchangeName, queueName, new Random().Next(100, 1000).ToString());
+                    await SendMessage(exchangeName, queueName, new Random().Next(100, 1000).ToString(), routingKey);
                 }
                 else if (key.Key == ConsoleKey.C)
                 {
@@ -56,13 +56,13 @@ public class RabbitMq : IAsyncDisposable
 
     public async ValueTask DisposeAsync()
     {
-        await _connectionFactory.DisposeAsync();
+        await _connection.DisposeAsync();
         await _channel.DisposeAsync();
         
         GC.SuppressFinalize(this);
     }
     
-    private async Task SendMessage(string exchangeKey, string queueName, string message)
+    private async Task SendMessage(string exchangeKey, string queueName, string message, string? routingKey = null)
     {
         if (string.IsNullOrWhiteSpace(message))
         {
@@ -70,7 +70,7 @@ public class RabbitMq : IAsyncDisposable
         }
         var messageInBytes = Encoding.UTF8.GetBytes(message);
 
-        await _channel.BasicPublishAsync(exchange: exchangeKey, routingKey: queueName, body: messageInBytes);
+        await _channel.BasicPublishAsync(exchange: exchangeKey, routingKey: string.IsNullOrWhiteSpace(routingKey) ? queueName : routingKey, body: messageInBytes);
         Console.WriteLine("\nProducer sent one message\n");
     }
 }
