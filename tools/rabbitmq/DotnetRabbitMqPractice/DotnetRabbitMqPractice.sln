@@ -32,6 +32,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicsErrorsConsumer", "Top
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicsGeneralConsumer", "Topics\TopicsGeneralConsumer\TopicsGeneralConsumer.csproj", "{3E140EFD-E596-4A3A-8299-D87028F6DA28}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MassTransit", "MassTransit", "{A6959370-B737-4B27-84BC-1895ED1FD872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryMassTransit", "MassTransit\InMemoryMassTransit\InMemoryMassTransit.csproj", "{731C46EF-905F-4EFE-B54F-72C12D1D84BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,7 @@ Global
 		{9222F7DD-E7EE-4F3B-BCBD-96E2F1AB036B} = {ECE49BFB-CF60-4401-B2D7-45239BAE9355}
 		{31761C12-28B4-4BF2-8544-46D7A7378857} = {ECE49BFB-CF60-4401-B2D7-45239BAE9355}
 		{3E140EFD-E596-4A3A-8299-D87028F6DA28} = {ECE49BFB-CF60-4401-B2D7-45239BAE9355}
+		{731C46EF-905F-4EFE-B54F-72C12D1D84BD} = {A6959370-B737-4B27-84BC-1895ED1FD872}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{457842CA-2519-4183-AED3-B2EDA4496F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -95,5 +100,9 @@ Global
 		{3E140EFD-E596-4A3A-8299-D87028F6DA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E140EFD-E596-4A3A-8299-D87028F6DA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E140EFD-E596-4A3A-8299-D87028F6DA28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{731C46EF-905F-4EFE-B54F-72C12D1D84BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731C46EF-905F-4EFE-B54F-72C12D1D84BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731C46EF-905F-4EFE-B54F-72C12D1D84BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731C46EF-905F-4EFE-B54F-72C12D1D84BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
