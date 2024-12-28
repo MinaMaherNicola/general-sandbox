@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MassTransit", "MassTransit"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryMassTransit", "MassTransit\InMemoryMassTransit\InMemoryMassTransit.csproj", "{731C46EF-905F-4EFE-B54F-72C12D1D84BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMqMassTransit", "RabbitMqMassTransit\RabbitMqMassTransit.csproj", "{74EF5393-AEE1-415D-8E5B-D07B7F80F876}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,7 @@ Global
 		{31761C12-28B4-4BF2-8544-46D7A7378857} = {ECE49BFB-CF60-4401-B2D7-45239BAE9355}
 		{3E140EFD-E596-4A3A-8299-D87028F6DA28} = {ECE49BFB-CF60-4401-B2D7-45239BAE9355}
 		{731C46EF-905F-4EFE-B54F-72C12D1D84BD} = {A6959370-B737-4B27-84BC-1895ED1FD872}
+		{74EF5393-AEE1-415D-8E5B-D07B7F80F876} = {A6959370-B737-4B27-84BC-1895ED1FD872}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{457842CA-2519-4183-AED3-B2EDA4496F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -104,5 +107,9 @@ Global
 		{731C46EF-905F-4EFE-B54F-72C12D1D84BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{731C46EF-905F-4EFE-B54F-72C12D1D84BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{731C46EF-905F-4EFE-B54F-72C12D1D84BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74EF5393-AEE1-415D-8E5B-D07B7F80F876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74EF5393-AEE1-415D-8E5B-D07B7F80F876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74EF5393-AEE1-415D-8E5B-D07B7F80F876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74EF5393-AEE1-415D-8E5B-D07B7F80F876}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
