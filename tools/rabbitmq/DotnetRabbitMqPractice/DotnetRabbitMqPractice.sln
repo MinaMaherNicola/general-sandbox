@@ -33,10 +33,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicsGeneralConsumer", "Topics\TopicsGeneralConsumer\TopicsGeneralConsumer.csproj", "{3E140EFD-E596-4A3A-8299-D87028F6DA28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MassTransit", "MassTransit", "{A6959370-B737-4B27-84BC-1895ED1FD872}"
+	ProjectSection(SolutionItems) = preProject
+		MassTransit\Directory.Packages.props = MassTransit\Directory.Packages.props
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemory", "MassTransit\InMemory\InMemory.csproj", "{731C46EF-905F-4EFE-B54F-72C12D1D84BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq", "MassTransit\RabbitMq\RabbitMq.csproj", "{74EF5393-AEE1-415D-8E5B-D07B7F80F876}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saga", "MassTransit\Saga\Saga.csproj", "{9149AB97-FAC6-4CBD-A85F-963C57B680A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +62,7 @@ Global
 		{3E140EFD-E596-4A3A-8299-D87028F6DA28} = {ECE49BFB-CF60-4401-B2D7-45239BAE9355}
 		{731C46EF-905F-4EFE-B54F-72C12D1D84BD} = {A6959370-B737-4B27-84BC-1895ED1FD872}
 		{74EF5393-AEE1-415D-8E5B-D07B7F80F876} = {A6959370-B737-4B27-84BC-1895ED1FD872}
+		{9149AB97-FAC6-4CBD-A85F-963C57B680A0} = {A6959370-B737-4B27-84BC-1895ED1FD872}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{457842CA-2519-4183-AED3-B2EDA4496F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -111,5 +117,9 @@ Global
 		{74EF5393-AEE1-415D-8E5B-D07B7F80F876}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74EF5393-AEE1-415D-8E5B-D07B7F80F876}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74EF5393-AEE1-415D-8E5B-D07B7F80F876}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9149AB97-FAC6-4CBD-A85F-963C57B680A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9149AB97-FAC6-4CBD-A85F-963C57B680A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9149AB97-FAC6-4CBD-A85F-963C57B680A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9149AB97-FAC6-4CBD-A85F-963C57B680A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
