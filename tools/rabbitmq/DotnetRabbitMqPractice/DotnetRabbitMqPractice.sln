@@ -2,9 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basics", "Basics", "{2B95E51D-7234-4359-BB05-FBA8A1349497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer", "Producer\Producer.csproj", "{457842CA-2519-4183-AED3-B2EDA4496F5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer", "Basics\Producer\Producer.csproj", "{457842CA-2519-4183-AED3-B2EDA4496F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Consumer\Consumer.csproj", "{576E07CD-BBA0-4A5D-A99C-790FA269F3BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Basics\Consumer\Consumer.csproj", "{576E07CD-BBA0-4A5D-A99C-790FA269F3BC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{07BD7FA5-707C-4428-B2D2-215842630B0D}"
 EndProject
