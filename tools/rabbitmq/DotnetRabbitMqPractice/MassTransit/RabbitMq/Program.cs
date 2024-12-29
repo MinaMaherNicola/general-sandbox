@@ -3,9 +3,9 @@ using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
-using RabbitMqMassTransit.Consumers;
+using RabbitMq.Consumers;
 
-namespace RabbitMqMassTransit;
+namespace RabbitMq;
 
 internal abstract class Program
 {

@@ -3,7 +3,7 @@ using QueueBuilder;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace LogsConsumer;
+namespace ErrorConsumer;
 
 internal abstract class Program
 {

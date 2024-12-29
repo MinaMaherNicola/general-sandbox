@@ -8,13 +8,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consumer", "Basics\Consumer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{07BD7FA5-707C-4428-B2D2-215842630B0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueBuilder", "QueueBuilder\QueueBuilder.csproj", "{A4028DA3-AA4B-4699-826F-1BF930E0A178}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueBuilder", "Misc\QueueBuilder\QueueBuilder.csproj", "{A4028DA3-AA4B-4699-826F-1BF930E0A178}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pub/Sub", "Pub/Sub", "{76AC644B-9158-4E76-947F-14694DFEBEC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber", "Subscriber\Subscriber.csproj", "{C51466CC-F451-4FCC-87D5-E8C17CF39F91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber", "PubSub\Subscriber\Subscriber.csproj", "{C51466CC-F451-4FCC-87D5-E8C17CF39F91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Publisher\Publisher.csproj", "{F5425C07-634D-407D-8373-9FD48513FF7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "PubSub\Publisher\Publisher.csproj", "{F5425C07-634D-407D-8373-9FD48513FF7F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Routing", "Routing", "{42BCB4B1-A357-4D4A-B49B-E6205B2FA770}"
 EndProject
@@ -34,9 +34,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicsGeneralConsumer", "To
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MassTransit", "MassTransit", "{A6959370-B737-4B27-84BC-1895ED1FD872}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryMassTransit", "MassTransit\InMemoryMassTransit\InMemoryMassTransit.csproj", "{731C46EF-905F-4EFE-B54F-72C12D1D84BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemory", "MassTransit\InMemory\InMemory.csproj", "{731C46EF-905F-4EFE-B54F-72C12D1D84BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMqMassTransit", "RabbitMqMassTransit\RabbitMqMassTransit.csproj", "{74EF5393-AEE1-415D-8E5B-D07B7F80F876}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq", "MassTransit\RabbitMq\RabbitMq.csproj", "{74EF5393-AEE1-415D-8E5B-D07B7F80F876}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace InMemoryMassTransit;
+namespace InMemory;
 
 internal abstract class Program
 {

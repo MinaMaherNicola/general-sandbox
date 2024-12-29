@@ -1,8 +1,8 @@
 using MassTransit;
 using Microsoft.Extensions.Hosting;
-using RabbitMqMassTransit.Messages;
+using RabbitMq.Messages;
 
-namespace RabbitMqMassTransit;
+namespace RabbitMq;
 
 public class LogEmitter(ISendEndpointProvider sender) : BackgroundService
 {

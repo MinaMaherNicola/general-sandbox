@@ -1,7 +1,7 @@
-using InMemoryMassTransit.Messages;
+using InMemory.Messages;
 using MassTransit;
 
-namespace InMemoryMassTransit;
+namespace InMemory;
 
 public class MessageConsumer : IConsumer<CurrentTime>
 {

@@ -1,8 +1,8 @@
-using InMemoryMassTransit.Messages;
+using InMemory.Messages;
 using MassTransit;
 using Microsoft.Extensions.Hosting;
 
-namespace InMemoryMassTransit;
+namespace InMemory;
 
 public class MessagePublisher(IBus bus) : BackgroundService
 {

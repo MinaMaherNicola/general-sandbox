@@ -1,7 +1,7 @@
 using MassTransit;
-using RabbitMqMassTransit.Messages;
+using RabbitMq.Messages;
 
-namespace RabbitMqMassTransit.Consumers;
+namespace RabbitMq.Consumers;
 
 public class LogsConsumer : IConsumer<Log>
 {

@@ -1,4 +1,4 @@
-namespace RabbitMqMassTransit;
+namespace RabbitMq;
 
 public static class Constants
 {
