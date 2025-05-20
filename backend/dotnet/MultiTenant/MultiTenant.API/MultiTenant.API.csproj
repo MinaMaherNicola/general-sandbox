@@ -9,5 +9,9 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5"/>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Identity\Identity.Api\Identity.Api.csproj" />
+      <ProjectReference Include="..\Kernel\Kernel.Api\Kernel.Api.csproj" />
+    </ItemGroup>
 
 </Project>
