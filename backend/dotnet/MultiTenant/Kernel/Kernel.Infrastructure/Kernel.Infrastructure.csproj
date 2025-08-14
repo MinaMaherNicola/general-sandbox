@@ -20,5 +20,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Kernel.Application\Kernel.Application.csproj" />
+      <ProjectReference Include="..\Kernel.Domain\Kernel.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Persistence\Migrations\" />
     </ItemGroup>
 </Project>

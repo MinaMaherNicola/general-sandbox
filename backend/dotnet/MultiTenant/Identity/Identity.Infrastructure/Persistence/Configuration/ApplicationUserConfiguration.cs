@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Identity.Infrastructure.EntityConfiguration;
+namespace Identity.Infrastructure.Persistence.Configuration;
 
 public sealed class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
 {

@@ -15,9 +15,9 @@ public static class DependencyInjection
 
     private static IServiceCollection AddIdentityPersistence(this IServiceCollection services)
     {
-        services.AddDbContext<IdentityDbContext>();
+        services.AddDbContext<IdentityContext>();
 
-        services.AddScoped<IIdentityDbContext, IdentityDbContext>();
+        services.AddScoped<IIdentityDbContext, IdentityContext>();
 
         return services;
     }

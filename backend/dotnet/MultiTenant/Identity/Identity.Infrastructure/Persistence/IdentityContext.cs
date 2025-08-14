@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Identity.Infrastructure.Persistence;
 
-public sealed class IdentityDbContext(DbContextOptions<IdentityDbContext> options)
+public sealed class IdentityContext(DbContextOptions<IdentityContext> options)
     : IdentityDbContext<ApplicationUser>(options), IIdentityDbContext
 {
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.ApplyConfigurationsFromAssembly(typeof(IdentityDbContext).Assembly);
+        builder.ApplyConfigurationsFromAssembly(typeof(IdentityContext).Assembly);
         
         builder.HasDefaultSchema("Identity");
         

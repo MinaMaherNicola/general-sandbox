@@ -16,4 +16,9 @@ app.UseHttpsRedirection();
 
 app.MapGet("/", () => "Hello World!");
 
+if (app.Configuration.GetValue<bool>("Migrate"))
+{
+    await app.Services.MigrateAsync();
+}
+
 app.Run();

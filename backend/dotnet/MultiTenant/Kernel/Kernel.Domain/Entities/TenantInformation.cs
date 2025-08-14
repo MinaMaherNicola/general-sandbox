@@ -3,5 +3,6 @@
 public sealed class TenantInformation
 {
     public required Guid Id { get; init; }
-    public required string Name { get; set; }
+    public required string Name { get; init; }
+    public required string ConnectionString { get; init; }
 }
