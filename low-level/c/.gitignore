@@ -1,0 +1,144 @@
+###############################################################################
+# C / C++ BUILD ARTIFACTS
+###############################################################################
+
+# Object files
+*.o
+*.obj
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Static libraries
+*.a
+*.la
+*.lib
+
+# Shared / dynamic libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+###############################################################################
+# DEBUG / PROFILE / COVERAGE
+###############################################################################
+
+# Debug symbols & related
+*.dSYM/
+*.pdb
+*.idb
+*.ilk
+
+# Core dumps & crashes
+core
+core.[0-9]*
+*.stackdump
+
+# Profiling data
+gmon.out
+perf.data*
+*.prof
+
+# Code coverage (gcov / lcov / llvm)
+*.gcno
+*.gcda
+*.gcov
+*.lcov
+*.profraw
+*.profdata
+
+###############################################################################
+# BUILD DIRECTORIES (COMMON CONVENTIONS)
+###############################################################################
+
+# Generic build dirs
+build/
+Build/
+build-*/
+_build/
+bin/
+obj/
+out/
+dist/
+
+# Config-specific (Windows / cross-platform)
+Debug/
+DebugPublic/
+Release/
+RelWithDebInfo/
+MinSizeRel/
+x64/
+x86/
+
+###############################################################################
+# CMAKE (TYPICAL IN-SOURCE BUILD ARTIFACTS)
+###############################################################################
+
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+_install/
+install_manifest.txt
+
+# If you generate compile_commands.json locally, ignore it:
+compile_commands.json
+
+###############################################################################
+# AUTOTOOLS / CONFIGURE (ONLY IF GENERATED LOCALLY)
+# Uncomment these if your project generates them instead of tracking them.
+###############################################################################
+
+# configure
+# config.status
+# config.log
+# config.h
+# config.h.in
+# Makefile.in
+
+###############################################################################
+# EDITOR / OS JUNK (CROSS-PLATFORM)
+###############################################################################
+
+# Vim / Emacs / generic backups
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+###############################################################################
+# IDE / TOOLING
+###############################################################################
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains / CLion
+.idea/
+cmake-build-*/
+
+# Other common metadata
+*.log
