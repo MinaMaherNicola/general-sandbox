@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Progress</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-row">
+      <div>
+        <h1>Learning Progress</h1>
+        <p class="subtitle">Track what you're studying.</p>
+      </div>
+      <button id="add-btn" class="btn btn-primary" type="button">+ Add Topic</button>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <div id="error-banner" class="error-banner hidden" role="alert">
+      <span id="error-message"></span>
+      <button type="button" id="error-dismiss" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <div id="loading-state" class="state">
+      <p>Loading…</p>
+    </div>
+
+    <div id="empty-state" class="state hidden">
+      <h2>No topics yet</h2>
+      <p>Add your first learning topic to start tracking progress.</p>
+    </div>
+
+    <div id="topics-grid" class="topics-grid hidden" aria-live="polite"></div>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-modal-close></div>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h2 id="modal-title">Add Topic</h2>
+        <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
+      </header>
+      <form id="topic-form" novalidate>
+        <div class="form-group">
+          <label for="name">Subject / Name</label>
+          <input type="text" id="name" name="name" maxlength="200" required autocomplete="off" placeholder="e.g. Clean Architecture">
+        </div>
+
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select id="type" name="type" required>
+            <option value="book">Book</option>
+            <option value="videos">Video Course</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="total_units" id="total-label">Total chapters</label>
+            <input type="number" id="total_units" name="total_units" min="0" max="10000" step="1" required>
+          </div>
+          <div class="form-group">
+            <label for="completed_units" id="completed-label">Completed chapters</label>
+            <input type="number" id="completed_units" name="completed_units" min="0" max="10000" step="1" required>
+          </div>
+        </div>
+
+        <fieldset class="pace-fieldset">
+          <legend>Time Management <span class="muted">(optional)</span></legend>
+          <p class="pace-help">Set a learning pace to see an estimated finish time. Leave blank to skip.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pace_units" id="pace-units-label">Chapters per period</label>
+              <input type="number" id="pace_units" name="pace_units" min="1" max="10000" step="1" placeholder="e.g. 1">
+            </div>
+            <div class="form-group">
+              <label for="pace_period">Period</label>
+              <select id="pace_period" name="pace_period">
+                <option value="">—</option>
+                <option value="day">day</option>
+                <option value="week">week</option>
+                <option value="month">month</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <div id="form-error" class="form-error hidden" role="alert"></div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" data-modal-close>Cancel</button>
+          <button type="submit" id="save-btn" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <template id="topic-card-template">
+    <article class="topic-card">
+      <header class="topic-card-header">
+        <h3 class="topic-name"></h3>
+        <span class="topic-type-badge"></span>
+      </header>
+      <div class="topic-progress">
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <div class="progress-meta">
+          <span class="topic-units"></span>
+          <span class="topic-percent"></span>
+        </div>
+      </div>
+      <div class="topic-extra">
+        <div class="topic-remaining"></div>
+        <div class="topic-pace hidden"></div>
+        <div class="topic-estimate hidden"></div>
+        <div class="topic-completed-badge hidden">Completed</div>
+      </div>
+      <footer class="topic-card-footer">
+        <span class="topic-updated"></span>
+        <div class="topic-actions">
+          <button type="button" class="btn btn-ghost topic-edit">Edit</button>
+          <button type="button" class="btn btn-danger-ghost topic-delete">Delete</button>
+        </div>
+      </footer>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
