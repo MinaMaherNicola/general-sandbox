@@ -1,0 +1,3 @@
+Hello, this is an original file.
+This is an addition from the hardlink.
+This is an addition from the simLink.
